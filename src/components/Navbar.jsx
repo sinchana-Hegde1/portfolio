@@ -38,7 +38,7 @@ export default function Navbar({ activeSection }) {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-[90rem] mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="w-full px-8 lg:px-24 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#home"

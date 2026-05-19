@@ -62,7 +62,7 @@ export default function Contact() {
         style={{ background: 'radial-gradient(ellipse, #7c3aed 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-[90rem] mx-auto px-6 relative z-10">
+      <div className="w-full px-8 lg:px-24 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}

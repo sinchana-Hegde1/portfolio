@@ -60,7 +60,7 @@ export default function About() {
       <div className="absolute left-0 top-1/2 w-72 h-72 rounded-full opacity-5 -translate-y-1/2 -translate-x-1/2"
         style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }} />
 
-      <div className="max-w-[90rem] mx-auto px-6">
+      <div className="w-full px-8 lg:px-24">
         {/* Section Header */}
         <motion.div
           ref={ref}
