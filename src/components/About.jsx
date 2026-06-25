@@ -10,12 +10,12 @@ const stats = [
 ];
 
 const interests = [
-  '🤖 Generative AI',
-  '🧠 Machine Learning',
-  '☁️ Cloud Computing',
-  '🌐 Web Development',
-  '📱 Mobile Apps',
-  '🔬 Intelligent Systems',
+  'Generative AI',
+  'Machine Learning',
+  'Cloud Computing',
+  'Web Development',
+  'Mobile Apps',
+  'Intelligent Systems',
 ];
 
 function StatCard({ stat, index }) {

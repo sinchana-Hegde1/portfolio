@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Briefcase, Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ChevronRight, Building2, Bot } from 'lucide-react';
 
 const experiences = [
   {
@@ -8,7 +8,7 @@ const experiences = [
     role: 'Java Android Framework Intern',
     duration: 'June 2025',
     location: 'Bangalore, India',
-    logo: '🏢',
+    icon: Building2,
     color: '#7c3aed',
     highlights: [
       'Developed a full-featured Inventory Management Android application',
@@ -23,7 +23,7 @@ const experiences = [
     role: 'AI Product Developer Intern',
     duration: 'January 2026 – Present',
     location: 'Bangalore, India',
-    logo: '🤖',
+    icon: Bot,
     color: '#06b6d4',
     current: true,
     highlights: [
@@ -55,7 +55,7 @@ function ExperienceCard({ exp, index }) {
         className="absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center text-lg z-10"
         style={{ background: `${exp.color}20`, border: `2px solid ${exp.color}60`, boxShadow: `0 0 20px ${exp.color}30` }}
       >
-        {exp.logo}
+        <exp.icon size={20} style={{ color: exp.color }} />
       </motion.div>
 
       {/* Card */}

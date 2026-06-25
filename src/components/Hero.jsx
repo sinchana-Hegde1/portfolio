@@ -4,7 +4,7 @@ import { ArrowDown, Download, ChevronRight } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, MailIcon } from './GithubIcon';
 import { TypeAnimation } from 'react-type-animation';
 
-/* Animated canvas particle background */
+/* Subtle animated canvas particle background */
 function ParticleBackground() {
   const canvasRef = useRef(null);
 
@@ -21,13 +21,13 @@ function ParticleBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    const particles = Array.from({ length: 80 }, () => ({
+    const particles = Array.from({ length: 55 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.5,
-      dx: (Math.random() - 0.5) * 0.4,
-      dy: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.5 + 0.1,
+      r: Math.random() * 1.2 + 0.3,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.35 + 0.08,
     }));
 
     const draw = () => {
@@ -44,16 +44,15 @@ function ParticleBackground() {
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
       });
 
-      // Draw connections
       particles.forEach((a, i) => {
         particles.slice(i + 1).forEach((b) => {
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          if (dist < 120) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(124, 58, 237, ${0.15 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(124, 58, 237, ${0.12 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.4;
             ctx.stroke();
           }
         });
@@ -88,51 +87,55 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
     >
-      {/* Radial glows */}
+      {/* Radial glows — toned down */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-20"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full opacity-15"
           style={{ background: 'radial-gradient(circle, #7c3aed 0%, transparent 70%)' }}
         />
         <div
-          className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10"
+          className="absolute bottom-0 right-0 w-[280px] h-[280px] rounded-full opacity-8"
           style={{ background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)' }}
         />
       </div>
 
       <ParticleBackground />
 
-      <div className="relative z-10 w-full px-8 lg:px-24 py-24 flex flex-col lg:flex-row items-center justify-between gap-16">
-        {/* Text Content */}
-        <div className="flex-1 text-center lg:text-left z-10 max-w-2xl">
-          {/* Greeting */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 py-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+
+        {/* ── Text Content ── */}
+        <div className="flex-1 text-center lg:text-left z-10">
+
+          {/* Status badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6 border border-white/10"
+            transition={{ duration: 0.45 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card mb-5 border border-white/10"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm font-medium text-white/80">Available for opportunities</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-medium text-white/70 tracking-wide">Available for opportunities</span>
           </motion.div>
 
-          {/* Name & Title */}
+          {/* Name */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl lg:text-7xl font-bold font-['Space_Grotesk'] tracking-tight mb-4"
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="text-4xl lg:text-5xl xl:text-6xl font-bold font-['Space_Grotesk'] tracking-tight mb-3 leading-tight"
           >
-            Hi, I’m <span className="gradient-text">Sinchana Hegde</span>
+            Hi, I'm{' '}
+            <span className="gradient-text">Sinchana Hegde</span>
           </motion.h1>
 
+          {/* Animated role */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-2xl lg:text-3xl text-white/80 font-medium mb-6 h-[40px] flex items-center justify-center lg:justify-start"
+            transition={{ duration: 0.45, delay: 0.18 }}
+            className="text-lg lg:text-xl text-white/70 font-medium mb-5 h-8 flex items-center justify-center lg:justify-start gap-2"
           >
-            <span className="text-violet-400 mr-2">▹</span>
+            <span className="text-violet-400 text-sm">▹</span>
             <TypeAnimation
               sequence={[
                 'AI Product Developer',
@@ -145,45 +148,55 @@ export default function Hero() {
                 2000,
               ]}
               wrapper="span"
-              speed={50}
+              speed={55}
               repeat={Infinity}
             />
           </motion.div>
 
+          {/* Bio */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-white/60 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
+            transition={{ duration: 0.45, delay: 0.26 }}
+            className="text-sm lg:text-base text-white/50 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0"
           >
-            Passionate Computer Science graduate focused on building AI-driven solutions, 
-            modern web applications, and solving real-world problems through technology.
+            Passionate CS graduate building AI-driven solutions, modern web apps, and
+            real-world products through technology and thoughtful design.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-12"
+            transition={{ duration: 0.45, delay: 0.34 }}
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
           >
-            <a href="#projects" className="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-medium flex items-center gap-2 transition-all glow-btn">
-              View Projects <ChevronRight size={18} />
+            <a
+              href="#projects"
+              className="px-5 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium flex items-center gap-1.5 transition-all glow-btn"
+            >
+              View Projects <ChevronRight size={15} />
             </a>
-            <a href="#" className="px-6 py-3 rounded-xl glass-card text-white hover:bg-white/10 font-medium flex items-center gap-2 transition-all border border-white/10">
-              <Download size={18} /> Download Resume
+            <a
+              href="#"
+              className="px-5 py-2.5 rounded-lg glass-card text-white/80 hover:text-white text-sm font-medium flex items-center gap-1.5 transition-all border border-white/10"
+            >
+              <Download size={15} /> Resume
             </a>
-            <a href="#contact" className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-all border border-white/5">
-              Contact Me
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-lg text-white/60 hover:text-white text-sm font-medium transition-all border border-white/8 hover:border-white/20 hover:bg-white/5"
+            >
+              Contact
             </a>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex items-center justify-center lg:justify-start gap-4"
+            transition={{ duration: 0.45, delay: 0.42 }}
+            className="flex items-center justify-center lg:justify-start gap-3"
           >
             {[
               { icon: GithubIcon, href: 'https://github.com/sinchana-Hegde1', label: 'GitHub' },
@@ -196,68 +209,43 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-11 h-11 rounded-xl flex items-center justify-center glass-card text-white/60 hover:text-violet-400 transition-all duration-300 hover:scale-110"
+                className="w-9 h-9 rounded-lg flex items-center justify-center glass-card text-white/50 hover:text-violet-400 transition-all duration-300 hover:scale-110"
               >
-                <Icon size={18} />
+                <Icon size={16} />
               </a>
             ))}
           </motion.div>
         </div>
 
-        {/* Center Decorative Element for Wide Screens to fill the huge gap */}
-        <div className="hidden xl:flex absolute left-[55%] top-[45%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-10 pointer-events-none z-0">
-          <motion.div 
-            animate={{ y: [-15, 15, -15], rotate: [-2, 2, -2] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex items-center gap-4 px-6 py-4 rounded-2xl glass-card border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl -translate-x-12"
-          >
-            <div className="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center text-xl border border-violet-500/30">🤖</div>
-            <div className="flex flex-col text-left">
-              <span className="text-white/90 font-bold text-sm tracking-wide">AI / ML</span>
-              <span className="text-white/40 text-xs">Algorithms</span>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [15, -15, 15], rotate: [2, -2, 2] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="flex items-center gap-4 px-6 py-4 rounded-2xl glass-card border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl translate-x-16"
-          >
-            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-xl border border-blue-500/30">⚛️</div>
-            <div className="flex flex-col text-left">
-              <span className="text-white/90 font-bold text-sm tracking-wide">Web Dev</span>
-              <span className="text-white/40 text-xs">React & Vite</span>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [-10, 10, -10], rotate: [-1, 1, -1] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex items-center gap-4 px-6 py-4 rounded-2xl glass-card border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl -translate-x-4"
-          >
-            <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-xl border border-emerald-500/30">☁️</div>
-            <div className="flex flex-col text-left">
-              <span className="text-white/90 font-bold text-sm tracking-wide">Cloud</span>
-              <span className="text-white/40 text-xs">AWS & Azure</span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Profile Image */}
+        {/* ── Profile Image ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex-shrink-0 relative"
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="flex-shrink-0"
         >
-          {/* Professional Circular Profile Photo */}
-          <div className="relative w-64 h-64 lg:w-[350px] lg:h-[350px] flex-shrink-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 to-blue-600/20 rounded-full translate-x-4 translate-y-4 -z-10" />
-            <img 
-              src="/profile.jpg" 
-              alt="Sinchana Hegde" 
-              className="w-full h-full object-cover object-top rounded-full shadow-2xl border-2 border-white/10" 
+          <div className="relative">
+            {/* Outer glow ring */}
+            <div
+              className="absolute inset-0 rounded-full opacity-30 blur-xl"
+              style={{ background: 'radial-gradient(circle, #7c3aed 0%, transparent 70%)' }}
             />
+            {/* Profile photo */}
+            <div className="relative w-52 h-52 lg:w-64 lg:h-64 xl:w-72 xl:h-72">
+              <img
+                src="/profile.jpg"
+                alt="Sinchana Hegde"
+                className="w-full h-full object-cover object-top rounded-full border border-white/10 shadow-2xl"
+              />
+              {/* Thin gradient ring */}
+              <div
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background: 'transparent',
+                  boxShadow: '0 0 0 2px rgba(124, 58, 237, 0.35), 0 0 40px rgba(124, 58, 237, 0.15)',
+                }}
+              />
+            </div>
           </div>
         </motion.div>
       </div>
@@ -267,15 +255,15 @@ export default function Hero() {
         onClick={scrollToAbout}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors"
+        transition={{ delay: 1.1 }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/25 hover:text-white/50 transition-colors"
       >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-[10px] tracking-widest uppercase">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ArrowDown size={18} />
+          <ArrowDown size={15} />
         </motion.div>
       </motion.button>
     </section>

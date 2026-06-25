@@ -1,47 +1,47 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, ExternalLink } from 'lucide-react';
+import { Award, ExternalLink, Code, Brain, Cloud, Sparkles, Zap } from 'lucide-react';
 
 const certifications = [
   {
     title: 'Python Certification',
     issuer: 'Professional Certification Body',
     year: '2024',
-    emoji: '🐍',
+    icon: Code,
     color: '#3b82f6',
-    credentialLink: '#',
+    credentialLink: '/python-certification.pdf',
   },
   {
     title: 'Machine Learning using Python',
     issuer: 'Simplilearn',
     year: '2025',
-    emoji: '🤖',
+    icon: Brain,
     color: '#7c3aed',
-    credentialLink: '#',
+    credentialLink: '/machine-learning.pdf',
   },
   {
     title: 'Salesforce Certification',
     issuer: 'TCS Last Mile Program',
     year: '2025',
-    emoji: '☁️',
+    icon: Cloud,
     color: '#00a1e0',
-    credentialLink: '#',
+    credentialLink: '/salesforce.pdf',
   },
   {
     title: 'Generative AI Certification',
     issuer: 'AWS Educate',
     year: '2026',
-    emoji: '✨',
+    icon: Sparkles,
     color: '#ff9900',
-    credentialLink: '#',
+    credentialLink: '/generative-ai.pdf',
   },
   {
     title: 'Cloud Computing',
     issuer: 'NPTEL – IIT Certification',
     year: '2025',
-    emoji: '🌩️',
+    icon: Zap,
     color: '#10b981',
-    credentialLink: '#',
+    credentialLink: '/cloud-computing.pdf',
   },
 ];
 
@@ -78,7 +78,7 @@ function CertCard({ cert, index }) {
             whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
             transition={{ duration: 0.4 }}
           >
-            {cert.emoji}
+            <cert.icon size={24} style={{ color: cert.color }} />
           </motion.div>
           <span
             className="px-2.5 py-0.5 rounded-full text-xs font-semibold"

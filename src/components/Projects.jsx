@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Layers } from 'lucide-react';
+import { ExternalLink, Layers, Activity, CloudRain, Sprout, FileText, Monitor, DollarSign } from 'lucide-react';
 import { GithubIcon } from './GithubIcon';
 
 const projects = [
@@ -9,7 +9,7 @@ const projects = [
     title: 'Multimodal Sensing for Enhanced UX & Wellbeing',
     desc: 'An emotion-aware intelligent system that uses voice, facial expressions, and text analysis to detect emotions in real-time and recommends personalized songs to enhance user wellbeing.',
     tags: ['Python', 'AI/ML', 'Emotion Detection', 'Computer Vision'],
-    emoji: '🎭',
+    icon: Activity,
     color: '#7c3aed',
     github: 'https://github.com/sinchana-Hegde1/Multimodal-Sensing-Emotion-Project',
     demo: '#',
@@ -19,26 +19,26 @@ const projects = [
     title: 'Disaster Prediction Detection',
     desc: 'An ML model for predicting disasters using environmental and historical data. Implemented Random Forest and SVC algorithms to detect patterns and predict disaster events with high accuracy.',
     tags: ['Python', 'Machine Learning', 'Random Forest', 'SVC'],
-    emoji: '🌪️',
+    icon: CloudRain,
     color: '#2563eb',
     github: 'https://github.com/sinchana-Hegde1/Disaster-Prediction',
-    demo: '#',
+    demo: 'https://disaster-prediction-1.onrender.com/',
     featured: true,
   },
   {
     title: 'Crop Recommendation System',
     desc: 'An intelligent system that suggests the most suitable crops based on soil composition and climate data. Built with Streamlit and scikit-learn, it includes crop yield estimation features.',
     tags: ['Python', 'Streamlit', 'Scikit-learn', 'Agriculture AI'],
-    emoji: '🌾',
+    icon: Sprout,
     color: '#10b981',
     github: 'https://github.com/sinchana-Hegde1/crop_recommendation',
-    demo: '#',
+    demo: 'https://crop-recommendation-4i0t.onrender.com/',
   },
   {
     title: 'Agentic Resume Screening',
     desc: 'An AI-powered system designed to automate resume screening using intelligent agents. Evaluates candidate profiles against job requirements for efficient hiring.',
     tags: ['Python', 'Generative AI', 'NLP', 'Automation'],
-    emoji: '📄',
+    icon: FileText,
     color: '#f59e0b',
     github: 'https://github.com/sinchana-Hegde1/agenticresumescreening',
     demo: '#',
@@ -47,7 +47,7 @@ const projects = [
     title: 'IT Asset Manager',
     desc: 'A comprehensive Java-based application for managing IT assets within an organization, featuring inventory tracking, assignment management, and reporting capabilities.',
     tags: ['Java', 'Software Engineering', 'Asset Management'],
-    emoji: '💻',
+    icon: Monitor,
     color: '#ec4899',
     github: 'https://github.com/sinchana-Hegde1/ITAssetManager',
     demo: '#',
@@ -56,7 +56,7 @@ const projects = [
     title: 'Expense Tracker',
     desc: 'A modern web application built with JavaScript to track daily expenses, manage budgets, and visualize spending habits with a clean, responsive user interface.',
     tags: ['JavaScript', 'Web Development', 'Finance', 'UI/UX'],
-    emoji: '💰',
+    icon: DollarSign,
     color: '#06b6d4',
     github: 'https://github.com/sinchana-Hegde1/Expense_Tracker',
     demo: '#',
@@ -105,7 +105,7 @@ function ProjectCard({ project, index }) {
             className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
             style={{ background: `${project.color}15`, border: `1px solid ${project.color}30` }}
           >
-            {project.emoji}
+            <project.icon size={24} style={{ color: project.color }} />
           </div>
           <div>
             <h3 className="font-['Space_Grotesk'] font-bold text-white text-base leading-snug">
